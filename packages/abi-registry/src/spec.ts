@@ -33,7 +33,13 @@ export type PrimitiveType =
    * is a separate `types` entry, correlated by convention rather than a
    * direct type reference. Verified against a real soroban-sdk 27 build.
    */
-  | "error";
+  | "error"
+  /**
+   * The generic "any value" slot (`scSpecTypeVal` in the XDR spec format): a
+   * parameter or return typed as a raw `soroban_sdk::Val`, whose concrete
+   * shape is only known at runtime. Used by e.g. the Aquarius pool contracts.
+   */
+  | "val";
 
 /** Fixed-length byte array, e.g. `bytes_n<32>`. */
 export type BytesNType = { readonly type: "bytes_n"; readonly size: number };
@@ -252,6 +258,7 @@ const PRIMITIVE_TYPES: ReadonlySet<string> = new Set<PrimitiveType>([
   "address",
   "void",
   "error",
+  "val",
 ]);
 
 const COMPOSITE_TYPE_TAGS = new Set([

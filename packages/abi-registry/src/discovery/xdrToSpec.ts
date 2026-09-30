@@ -101,9 +101,9 @@ export function mapTypeDef(type: xdr.ScSpecTypeDef): TypeSpec {
     // encoded regardless of which #[contracterror] enum is named.
     case "scSpecTypeError":
       return "error";
-    // scSpecTypeVal (generic "any" ScVal) has no faithful representation in
-    // our closed PrimitiveType set.
+    // The generic "any" ScVal slot (a raw `soroban_sdk::Val` parameter/return).
     case "scSpecTypeVal":
+      return "val";
     default:
       throw new UnsupportedSpecTypeError(name);
   }

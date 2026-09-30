@@ -39,8 +39,20 @@ describe("mapTypeDef - composite and edge-case types not covered by the real WAS
     expect(mapTypeDef(xdr.ScSpecTypeDef.scSpecTypeError())).toBe("error");
   });
 
-  it("throws UnsupportedSpecTypeError for the generic Val type", () => {
-    expect(() => mapTypeDef(xdr.ScSpecTypeDef.scSpecTypeVal())).toThrow(UnsupportedSpecTypeError);
+  it("maps the generic Val slot to the val primitive", () => {
+    expect(mapTypeDef(xdr.ScSpecTypeDef.scSpecTypeVal())).toBe("val");
+  });
+
+  it("maps Val nested inside composites: Vec<Val>", () => {
+    const type = xdr.ScSpecTypeDef.scSpecTypeVec(
+      new xdr.ScSpecTypeVec({ elementType: xdr.ScSpecTypeDef.scSpecTypeVal() }),
+    );
+    expect(mapTypeDef(type)).toEqual({ type: "vec", item: "val" });
+  });
+
+  it("still throws UnsupportedSpecTypeError for an unknown type arm", () => {
+    const fake = { switch: () => ({ name: "scSpecTypeFuture" }) } as unknown as xdr.ScSpecTypeDef;
+    expect(() => mapTypeDef(fake)).toThrow(UnsupportedSpecTypeError);
   });
 
   it("recurses through nested composites: Option<Vec<Address>>", () => {
