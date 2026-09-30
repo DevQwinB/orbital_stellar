@@ -5,6 +5,7 @@
 ### Added
 - `PrimitiveType` gained `"val"` - the generic `scSpecTypeVal` slot (a raw `soroban_sdk::Val` parameter/return). `discoverContractSpec()` previously threw `UnsupportedSpecTypeError` for any contract using it (e.g. Aquarius pools); it now maps to `val` (typegen emits `unknown` / `z.unknown()`). `spec.schema.json` and `taxonomy.schema.json` list it.
 - `specs/community/` - verified canonical spec and `match` verdict for an Aquarius stableswap pool (`CCLZQDL5...PDF`).
+- `specs/community/` - verified canonical spec and `match` verdict for an Aquarius constant-product pool, XLM/AQUA (`CCY2PXGM...IFWV`).
 
 ## [0.2.0] - 2026-09-23
 

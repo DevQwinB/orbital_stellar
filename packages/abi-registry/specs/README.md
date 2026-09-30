@@ -155,3 +155,4 @@ CI runs `pnpm --filter @orbital-stellar/abi-registry validate` on every pull req
 | Contract ID | Protocol / role | Source |
 |---|---|---|
 | `CCLZQDL5LY2DBPNNFBRKPSROGFGTT7Y7AI2SM6QUI3SUTTKA672X4PDF` | Aquarius stableswap pool (USDC/USDx) | Aquarius backend API `https://amm-api.aqua.network/api/external/v2/pools/` (pool type `stable`), [stellar.expert](https://stellar.expert/explorer/public/contract/CCLZQDL5LY2DBPNNFBRKPSROGFGTT7Y7AI2SM6QUI3SUTTKA672X4PDF) |
+| `CCY2PXGMKNQHO7WNYXEWX76L2C5BH3JUW3RCATGUYKY7QQTRILBZIFWV` | Aquarius constant-product pool (XLM/AQUA) | Aquarius backend API `https://amm-api.aqua.network/api/external/v2/pools/` (pool type `constant_product`), [stellar.expert](https://stellar.expert/explorer/public/contract/CCY2PXGMKNQHO7WNYXEWX76L2C5BH3JUW3RCATGUYKY7QQTRILBZIFWV) |
